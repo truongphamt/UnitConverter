@@ -13,6 +13,7 @@
 		1127F2872037DA6700A8CF58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1127F2852037DA6700A8CF58 /* LaunchScreen.storyboard */; };
 		1127F28F2038639600A8CF58 /* LengthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127F28E2038639600A8CF58 /* LengthTableViewController.swift */; };
 		1127F2922039089100A8CF58 /* UnitConverter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1127F2902039089100A8CF58 /* UnitConverter.xcdatamodeld */; };
+		1150799C2039FDDF0034B68B /* LengthConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150799B2039FDDF0034B68B /* LengthConversionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1127F2882037DA6700A8CF58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1127F28E2038639600A8CF58 /* LengthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthTableViewController.swift; sourceTree = "<group>"; };
 		1127F2912039089100A8CF58 /* Conversion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Conversion.xcdatamodel; sourceTree = "<group>"; };
+		1150799B2039FDDF0034B68B /* LengthConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthConversionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				1127F2882037DA6700A8CF58 /* Info.plist */,
 				1127F28E2038639600A8CF58 /* LengthTableViewController.swift */,
 				1127F2902039089100A8CF58 /* UnitConverter.xcdatamodeld */,
+				1150799B2039FDDF0034B68B /* LengthConversionViewController.swift */,
 			);
 			path = UnitConverter;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			files = (
 				1127F2922039089100A8CF58 /* UnitConverter.xcdatamodeld in Sources */,
 				1127F27D2037DA6700A8CF58 /* AppDelegate.swift in Sources */,
+				1150799C2039FDDF0034B68B /* LengthConversionViewController.swift in Sources */,
 				1127F28F2038639600A8CF58 /* LengthTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
