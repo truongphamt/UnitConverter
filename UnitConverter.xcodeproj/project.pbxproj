@@ -12,6 +12,7 @@
 		1127F2842037DA6700A8CF58 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1127F2832037DA6700A8CF58 /* Assets.xcassets */; };
 		1127F2872037DA6700A8CF58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1127F2852037DA6700A8CF58 /* LaunchScreen.storyboard */; };
 		1127F28F2038639600A8CF58 /* LengthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127F28E2038639600A8CF58 /* LengthTableViewController.swift */; };
+		1127F2922039089100A8CF58 /* UnitConverter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1127F2902039089100A8CF58 /* UnitConverter.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1127F2862037DA6700A8CF58 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1127F2882037DA6700A8CF58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1127F28E2038639600A8CF58 /* LengthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthTableViewController.swift; sourceTree = "<group>"; };
+		1127F2912039089100A8CF58 /* Conversion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Conversion.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				1127F2852037DA6700A8CF58 /* LaunchScreen.storyboard */,
 				1127F2882037DA6700A8CF58 /* Info.plist */,
 				1127F28E2038639600A8CF58 /* LengthTableViewController.swift */,
+				1127F2902039089100A8CF58 /* UnitConverter.xcdatamodeld */,
 			);
 			path = UnitConverter;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1127F2922039089100A8CF58 /* UnitConverter.xcdatamodeld in Sources */,
 				1127F27D2037DA6700A8CF58 /* AppDelegate.swift in Sources */,
 				1127F28F2038639600A8CF58 /* LengthTableViewController.swift in Sources */,
 			);
@@ -322,6 +326,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1127F2902039089100A8CF58 /* UnitConverter.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1127F2912039089100A8CF58 /* Conversion.xcdatamodel */,
+			);
+			currentVersion = 1127F2912039089100A8CF58 /* Conversion.xcdatamodel */;
+			path = UnitConverter.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1127F2712037DA6700A8CF58 /* Project object */;
 }

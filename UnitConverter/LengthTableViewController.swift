@@ -2,11 +2,12 @@
 //  LengthTableViewController.swift
 //  UnitConverter
 //
-//  Created by Anh Phung on 2/17/18.
+//  Created by Truong Pham on 2/17/18.
 //  Copyright © 2018 Truong Pham. All rights reserved.
 //
 
 import UIKit
+import CoreData
 
 class LengthTableViewController: UITableViewController {
 
@@ -18,17 +19,12 @@ class LengthTableViewController: UITableViewController {
         "Inches to Centimeters",
         "Centimeters to Inches"
     ]
-    
-    var recents = [String]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var recents: [Conversion] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        getData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,10 +51,11 @@ class LengthTableViewController: UITableViewController {
 
         // Configure the cell...
         if indexPath.section == 0 {
-            cell.textLabel?.text = String(conversions[indexPath.item])
+            cell.textLabel?.text = String(conversions[indexPath.row])
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         } else {
-            cell.textLabel?.text = String(recents[indexPath.item])
+            let recent = recents[indexPath.row]
+            cell.textLabel?.text = recent.item
         }
 
         return cell
@@ -73,13 +70,53 @@ class LengthTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            //tableView.deleteRows(at: [indexPath], with: .fade)
+            let recent = recents[indexPath.row]
+            context.delete(recent)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            getData()
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "lengthToConverter", sender: conversions[indexPath.item])
+        if indexPath.section == 0 {
+            self.performSegue(withIdentifier: "lengthToConverter", sender: conversions[indexPath.item])
+            
+            // Create empty record
+            let newConversion = Conversion(context: context)
+            let now = Date()
+            newConversion.item = "test"
+            newConversion.convertedDate = now
+            newConversion.type = "Length"
+            
+            // Save the data to coredata
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            
+            getData()
+        }
     }
+    
+    func getData() {
+        do {
+            // Create Fetch Request
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Conversion")
+            
+            // Add Sort Descriptor
+            let sortDescriptor = NSSortDescriptor(key: "convertedDate", ascending: false)
+            fetchRequest.sortDescriptors = [sortDescriptor]
+            
+            // Add Predicate
+            let predicate = NSPredicate(format: "type CONTAINS %@", "Length")
+            fetchRequest.predicate = predicate
+            
+            recents = try context.fetch(fetchRequest) as! [Conversion]
+        } catch {
+            print("Fetching Failed")
+        }
+        tableView.reloadData()
+    }
+
 
     /*
     // MARK: - Navigation
