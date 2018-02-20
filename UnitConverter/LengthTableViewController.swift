@@ -9,15 +9,31 @@
 import UIKit
 import CoreData
 
+struct LengthConversionInfo {
+    var display = ""
+    var fromUnit = ""
+    var toUnit = ""
+    var conversionFactor = 0.0
+    
+    init() {}
+    
+    init(display: String, fromUnit: String, toUnit: String, conversionFactor: Double) {
+        self.display = display
+        self.fromUnit = fromUnit
+        self.toUnit = toUnit
+        self.conversionFactor = conversionFactor
+    }
+}
+
 class LengthTableViewController: UITableViewController {
 
     let conversions = [
-        "Kilometer to Miles",
-        "Miles to Kilometer",
-        "Yard to Feet",
-        "Feet to Yard",
-        "Inches to Centimeters",
-        "Centimeters to Inches"
+        LengthConversionInfo(display: "Kilometer to Miles", fromUnit: "Kilometers", toUnit: "Miles", conversionFactor: 0.621371),
+        LengthConversionInfo(display: "Miles to Kilometer", fromUnit: "Miles", toUnit: "Kilometers", conversionFactor: 1.60934),
+        LengthConversionInfo(display: "Yard to Feet", fromUnit: "Yard", toUnit: "Feet", conversionFactor: 3.0),
+        LengthConversionInfo(display: "Feet to Yard", fromUnit: "Feet", toUnit: "Yard", conversionFactor: 0.33333),
+        LengthConversionInfo(display: "Inches to Centimeters", fromUnit: "Inches", toUnit: "Centimeters", conversionFactor: 2.54),
+        LengthConversionInfo(display: "Centimeters to Inches", fromUnit: "Centimeters", toUnit: "Inches", conversionFactor: 0.3937)
     ]
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recents: [Conversion] = []
@@ -51,7 +67,7 @@ class LengthTableViewController: UITableViewController {
 
         // Configure the cell...
         if indexPath.section == 0 {
-            cell.textLabel?.text = String(conversions[indexPath.row])
+            cell.textLabel?.text = String(conversions[indexPath.row].display)
             cell.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
         } else {
             let recent = recents[indexPath.row]
@@ -81,19 +97,7 @@ class LengthTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            self.performSegue(withIdentifier: "lengthToConverter", sender: conversions[indexPath.item])
-            
-            // Create empty record
-            let newConversion = Conversion(context: context)
-            let now = Date()
-            newConversion.item = "test"
-            newConversion.convertedDate = now
-            newConversion.type = "Length"
-            
-            // Save the data to coredata
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            
-            getData()
+            self.performSegue(withIdentifier: "lengthToConverter", sender: self)
         }
     }
     
@@ -118,14 +122,16 @@ class LengthTableViewController: UITableViewController {
     }
 
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let viewController = segue.destination as? LengthConversionViewController {
+            viewController.conversionInfo = conversions[(self.tableView.indexPathForSelectedRow?.row)!]
+        }
+
     }
-    */
 
 }
