@@ -10,6 +10,7 @@ import UIKit
 
 class LengthConversionViewController: UIViewController, UITextFieldDelegate {
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var conversionInfo = LengthConversionInfo()
     
     @IBOutlet weak var fromValue: UITextField!
@@ -18,8 +19,18 @@ class LengthConversionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var toUnit: UILabel!
     
     @IBAction func fromEditingChanged(_ sender: Any) {
-        toValue.text = String(Double(fromValue.text!)! * conversionInfo.conversionFactor)
+        if let value = Double(fromValue.text!) {
+            toValue.text = String(value * conversionInfo.conversionFactor)
+        }
+        else {
+            fromValue.text = ""
+            toValue.text = ""
+            return
+        }
     }
+    
+    // TODO: Anchor and resize from/to value controls
+    // TODO: Close keyboard on enter or tab
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,23 +45,28 @@ class LengthConversionViewController: UIViewController, UITextFieldDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        // save conversion to table
-        // Create empty record
-//        let newConversion = Conversion(context: context)
-//        let now = Date()
-//        newConversion.item = "test"
-//        newConversion.convertedDate = now
-//        newConversion.type = "Length"
-//
-//        // Save the data to coredata
-//        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        SaveCurrentConversion()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+        let allowedDecimal = !textField.text!.contains(".") && string.elementsEqual(".")
+        return allowedCharacters.isSuperset(of: characterSet) || allowedDecimal
     }
 
+    func SaveCurrentConversion() {
+        guard let fromValue = Double(fromValue.text!) else { return }
+        guard let toValue = Double(toValue.text!) else { return }
+        
+        let newConversion = Conversion(context: context)
+        let converted = "\(fromValue) \(fromUnit.text!) = \(toValue) \(toUnit.text!)"
+        newConversion.item = converted
+        newConversion.convertedDate = Date()
+        newConversion.type = "Length"
+
+        // Save the data to coredata
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
 }

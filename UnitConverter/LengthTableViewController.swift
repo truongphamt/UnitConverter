@@ -40,6 +40,10 @@ class LengthTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //getData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         getData()
     }
 
@@ -86,7 +90,6 @@ class LengthTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            //tableView.deleteRows(at: [indexPath], with: .fade)
             let recent = recents[indexPath.row]
             context.delete(recent)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -131,7 +134,6 @@ class LengthTableViewController: UITableViewController {
         if let viewController = segue.destination as? LengthConversionViewController {
             viewController.conversionInfo = conversions[(self.tableView.indexPathForSelectedRow?.row)!]
         }
-
     }
 
 }
