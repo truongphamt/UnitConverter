@@ -22,18 +22,8 @@ class LiquidTableViewController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recents: [ConvertedItem] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //getData()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         getData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
@@ -42,10 +32,12 @@ class LiquidTableViewController: UITableViewController {
         return 2
     }
     
+    // Setting number of rows in each section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return [conversions.count, recents.count][section]
     }
     
+    // Setting section header
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ["Conversions", "Recents"][section]
     }
@@ -66,11 +58,13 @@ class LiquidTableViewController: UITableViewController {
     }
     
     // Override to support conditional editing of the table view.
+    // Allow recent section to be editable
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == 1
     }
     
     // Override to support editing the table view.
+    // Allow recent section to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
@@ -82,12 +76,14 @@ class LiquidTableViewController: UITableViewController {
         }
     }
     
+    // perform seque to converterViewController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             self.performSegue(withIdentifier: "liquidToConverter", sender: self)
         }
     }
     
+    // Fetching recent items
     func getData() {
         do {
             // Create Fetch Request
@@ -108,10 +104,8 @@ class LiquidTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

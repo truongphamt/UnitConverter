@@ -13,6 +13,7 @@ class ConversionInfo: NSObject {
     var fromUnit = ""
     var toUnit = ""
     var conversionFactor = 0.0
+    var formula: ((Double) -> Double)?
     
     override init() {}
     
@@ -21,5 +22,20 @@ class ConversionInfo: NSObject {
         self.fromUnit = fromUnit
         self.toUnit = toUnit
         self.conversionFactor = conversionFactor
+    }
+    
+    init(type: String, fromUnit: String, toUnit: String, formula: @escaping (Double) -> Double) {
+        self.type = type
+        self.fromUnit = fromUnit
+        self.toUnit = toUnit
+        self.formula = formula
+    }
+    
+    public func convert(value: Double) -> Double {
+        if let conversionFormula = formula {
+            return conversionFormula(value)
+        } else {
+            return value * conversionFactor
+        }
     }
 }

@@ -20,7 +20,7 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func fromEditingChanged(_ sender: Any) {
         if let value = Double(fromValue.text!) {
-            toValue.text = String(value * conversionInfo.conversionFactor)
+            toValue.text = String(conversionInfo.convert(value: value))
         }
         else {
             fromValue.text = ""
@@ -28,9 +28,6 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
             return
         }
     }
-    
-    // TODO: Anchor and resize from/to value controls
-    // TODO: Close keyboard on enter or tab
     
     override func viewDidLoad() {
         super.viewDidLoad()

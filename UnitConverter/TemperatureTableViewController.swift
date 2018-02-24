@@ -1,23 +1,19 @@
 //
-//  LengthTableViewController.swift
+//  TemperatureTableViewController.swift
 //  UnitConverter
 //
-//  Created by Truong Pham on 2/17/18.
+//  Created by Truong Pham on 2/23/18.
 //  Copyright © 2018 Truong Pham. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class LengthTableViewController: UITableViewController {
+class TemperatureTableViewController: UITableViewController {
 
     let conversions = [
-        ConversionInfo(type: "Length", fromUnit: "Kilometers", toUnit: "Miles", conversionFactor: 0.621371),
-        ConversionInfo(type: "Length", fromUnit: "Miles", toUnit: "Kilometers", conversionFactor: 1.60934),
-        ConversionInfo(type: "Length", fromUnit: "Yard", toUnit: "Feet", conversionFactor: 3.0),
-        ConversionInfo(type: "Length", fromUnit: "Feet", toUnit: "Yard", conversionFactor: 0.33333),
-        ConversionInfo(type: "Length", fromUnit: "Inches", toUnit: "Centimeters", conversionFactor: 2.54),
-        ConversionInfo(type: "Length", fromUnit: "Centimeters", toUnit: "Inches", conversionFactor: 0.3937)
+        ConversionInfo(type: "Temperature", fromUnit: "Fahrenheit", toUnit: "Celsius", formula: { x in return (x - 32) * 0.5555 }),
+        ConversionInfo(type: "Temperature", fromUnit: "Celsius", toUnit: "Fahrenheit", formula: { x in return x * 1.8 + 32 })
     ]
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recents: [ConvertedItem] = []
@@ -25,13 +21,13 @@ class LengthTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         getData()
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
+    
     // Setting number of rows in each section
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return [conversions.count, recents.count][section]
@@ -41,10 +37,10 @@ class LengthTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ["Conversions", "Recents"][section]
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-
+        
         // Configure the cell...
         if indexPath.section == 0 {
             cell.textLabel?.text = "\(conversions[indexPath.row].fromUnit) to \(conversions[indexPath.row].toUnit)"
@@ -53,16 +49,16 @@ class LengthTableViewController: UITableViewController {
             let recent = recents[indexPath.row]
             cell.textLabel?.text = recent.item
         }
-
+        
         return cell
     }
-
+    
     // Override to support conditional editing of the table view.
     // Allow recent section to be editable
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section == 1
     }
-
+    
     // Override to support editing the table view.
     // Allow recent section to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -76,9 +72,10 @@ class LengthTableViewController: UITableViewController {
         }
     }
     
+    // perform seque to converterViewController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            self.performSegue(withIdentifier: "lengthToConverter", sender: self)
+            self.performSegue(withIdentifier: "temperatureToConverter", sender: self)
         }
     }
     
@@ -93,7 +90,7 @@ class LengthTableViewController: UITableViewController {
             fetchRequest.sortDescriptors = [sortDescriptor]
             
             // Add Predicate
-            let predicate = NSPredicate(format: "type CONTAINS %@", "Length")
+            let predicate = NSPredicate(format: "type CONTAINS %@", "Temperature")
             fetchRequest.predicate = predicate
             
             recents = try context.fetch(fetchRequest) as! [ConvertedItem]
@@ -102,11 +99,9 @@ class LengthTableViewController: UITableViewController {
         }
         tableView.reloadData()
     }
-
-
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
