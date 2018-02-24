@@ -18,6 +18,10 @@
 		115079C02040F4EF0034B68B /* LiquidTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079BF2040F4EF0034B68B /* LiquidTableViewController.swift */; };
 		115079C22040FC600034B68B /* TemperatureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079C12040FC600034B68B /* TemperatureTableViewController.swift */; };
 		115079C42041130F0034B68B /* MassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079C32041130F0034B68B /* MassTableViewController.swift */; };
+		115079D82041C2040034B68B /* ruler.png in Resources */ = {isa = PBXBuildFile; fileRef = 115079D42041C2030034B68B /* ruler.png */; };
+		115079D92041C2040034B68B /* thermometer.png in Resources */ = {isa = PBXBuildFile; fileRef = 115079D52041C2030034B68B /* thermometer.png */; };
+		115079DA2041C2040034B68B /* weight.png in Resources */ = {isa = PBXBuildFile; fileRef = 115079D62041C2030034B68B /* weight.png */; };
+		115079DB2041C2040034B68B /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = 115079D72041C2030034B68B /* drop.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +38,10 @@
 		115079BF2040F4EF0034B68B /* LiquidTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidTableViewController.swift; sourceTree = "<group>"; };
 		115079C12040FC600034B68B /* TemperatureTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTableViewController.swift; sourceTree = "<group>"; };
 		115079C32041130F0034B68B /* MassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassTableViewController.swift; sourceTree = "<group>"; };
+		115079D42041C2030034B68B /* ruler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruler.png; sourceTree = "<group>"; };
+		115079D52041C2030034B68B /* thermometer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thermometer.png; sourceTree = "<group>"; };
+		115079D62041C2030034B68B /* weight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weight.png; sourceTree = "<group>"; };
+		115079D72041C2030034B68B /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +74,7 @@
 		1127F27B2037DA6700A8CF58 /* UnitConverter */ = {
 			isa = PBXGroup;
 			children = (
+				115079D32041C2030034B68B /* Images */,
 				1127F27C2037DA6700A8CF58 /* AppDelegate.swift */,
 				1127F2802037DA6700A8CF58 /* Main.storyboard */,
 				1127F2832037DA6700A8CF58 /* Assets.xcassets */,
@@ -80,6 +89,17 @@
 				115079C32041130F0034B68B /* MassTableViewController.swift */,
 			);
 			path = UnitConverter;
+			sourceTree = "<group>";
+		};
+		115079D32041C2030034B68B /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				115079D42041C2030034B68B /* ruler.png */,
+				115079D52041C2030034B68B /* thermometer.png */,
+				115079D62041C2030034B68B /* weight.png */,
+				115079D72041C2030034B68B /* drop.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +163,11 @@
 			files = (
 				1127F2872037DA6700A8CF58 /* LaunchScreen.storyboard in Resources */,
 				1127F2842037DA6700A8CF58 /* Assets.xcassets in Resources */,
+				115079D82041C2040034B68B /* ruler.png in Resources */,
+				115079DB2041C2040034B68B /* drop.png in Resources */,
 				1127F2822037DA6700A8CF58 /* Main.storyboard in Resources */,
+				115079D92041C2040034B68B /* thermometer.png in Resources */,
+				115079DA2041C2040034B68B /* weight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
