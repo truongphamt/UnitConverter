@@ -36,13 +36,10 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
         toUnit.text = conversionInfo.toUnit
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
-        SaveCurrentConversion()
+        if self.isMovingFromParentViewController {
+            SaveCurrentConversion()
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
@@ -66,5 +63,9 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
         // Save the data to coredata
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        fromValue.resignFirstResponder()
+        return true
+    }
 }
