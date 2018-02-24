@@ -18,6 +18,7 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var fromUnit: UILabel!
     @IBOutlet weak var toUnit: UILabel!
     
+    // Convert value as user type
     @IBAction func fromEditingChanged(_ sender: Any) {
         if let value = Double(fromValue.text!) {
             toValue.text = String(conversionInfo.convert(value: value))
@@ -29,19 +30,23 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // Setup view on load
     override func viewDidLoad() {
         super.viewDidLoad()
         fromValue.delegate = self
+        fromValue.keyboardType = UIKeyboardType.decimalPad
         fromUnit.text = conversionInfo.fromUnit
         toUnit.text = conversionInfo.toUnit
     }
     
+    // Save data when back button is pressed
     override func viewWillDisappear(_ animated: Bool) {
         if self.isMovingFromParentViewController {
             SaveCurrentConversion()
         }
     }
     
+    // Only allow numeric characters to be typed
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
     {
         let allowedCharacters = CharacterSet.decimalDigits
@@ -50,6 +55,7 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
         return allowedCharacters.isSuperset(of: characterSet) || allowedDecimal
     }
     
+    // Save conversion to coredata
     func SaveCurrentConversion() {
         guard let fromValue = Double(fromValue.text!) else { return }
         guard let toValue = Double(toValue.text!) else { return }
@@ -62,10 +68,5 @@ class ConverterViewController: UIViewController, UITextFieldDelegate {
         
         // Save the data to coredata
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        fromValue.resignFirstResponder()
-        return true
     }
 }

@@ -246,7 +246,7 @@
             </objects>
             <point key="canvasLocation" x="633.60000000000002" y="830.2848575712145"/>
         </scene>
-        <!--Mass Table View Controller-->
+        <!--Mass-->
         <scene sceneID="aLo-0y-f6D">
             <objects>
                 <tableViewController id="V5N-78-JEI" customClass="MassTableViewController" customModule="UnitConverter" customModuleProvider="target" sceneMemberID="viewController">
@@ -269,7 +269,7 @@
                             <outlet property="delegate" destination="V5N-78-JEI" id="CDH-3r-MvE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="yrL-5P-XvE"/>
+                    <navigationItem key="navigationItem" title="Mass" id="yrL-5P-XvE"/>
                     <connections>
                         <segue destination="pwv-3x-3PG" kind="show" identifier="massToConverter" id="jat-7s-r3p"/>
                     </connections>
