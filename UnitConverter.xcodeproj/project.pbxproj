@@ -13,7 +13,9 @@
 		1127F2872037DA6700A8CF58 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1127F2852037DA6700A8CF58 /* LaunchScreen.storyboard */; };
 		1127F28F2038639600A8CF58 /* LengthTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1127F28E2038639600A8CF58 /* LengthTableViewController.swift */; };
 		1127F2922039089100A8CF58 /* UnitConverter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1127F2902039089100A8CF58 /* UnitConverter.xcdatamodeld */; };
-		1150799C2039FDDF0034B68B /* LengthConversionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1150799B2039FDDF0034B68B /* LengthConversionViewController.swift */; };
+		115079BC2040F0640034B68B /* ConversionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079BB2040F0640034B68B /* ConversionInfo.swift */; };
+		115079BE2040F2990034B68B /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079BD2040F2990034B68B /* ConverterViewController.swift */; };
+		115079C02040F4EF0034B68B /* LiquidTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079BF2040F4EF0034B68B /* LiquidTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +27,9 @@
 		1127F2882037DA6700A8CF58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1127F28E2038639600A8CF58 /* LengthTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthTableViewController.swift; sourceTree = "<group>"; };
 		1127F2912039089100A8CF58 /* Conversion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Conversion.xcdatamodel; sourceTree = "<group>"; };
-		1150799B2039FDDF0034B68B /* LengthConversionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthConversionViewController.swift; sourceTree = "<group>"; };
+		115079BB2040F0640034B68B /* ConversionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversionInfo.swift; sourceTree = "<group>"; };
+		115079BD2040F2990034B68B /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
+		115079BF2040F4EF0034B68B /* LiquidTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +69,9 @@
 				1127F2882037DA6700A8CF58 /* Info.plist */,
 				1127F28E2038639600A8CF58 /* LengthTableViewController.swift */,
 				1127F2902039089100A8CF58 /* UnitConverter.xcdatamodeld */,
-				1150799B2039FDDF0034B68B /* LengthConversionViewController.swift */,
+				115079BB2040F0640034B68B /* ConversionInfo.swift */,
+				115079BD2040F2990034B68B /* ConverterViewController.swift */,
+				115079BF2040F4EF0034B68B /* LiquidTableViewController.swift */,
 			);
 			path = UnitConverter;
 			sourceTree = "<group>";
@@ -144,8 +150,10 @@
 			files = (
 				1127F2922039089100A8CF58 /* UnitConverter.xcdatamodeld in Sources */,
 				1127F27D2037DA6700A8CF58 /* AppDelegate.swift in Sources */,
-				1150799C2039FDDF0034B68B /* LengthConversionViewController.swift in Sources */,
+				115079BC2040F0640034B68B /* ConversionInfo.swift in Sources */,
+				115079C02040F4EF0034B68B /* LiquidTableViewController.swift in Sources */,
 				1127F28F2038639600A8CF58 /* LengthTableViewController.swift in Sources */,
+				115079BE2040F2990034B68B /* ConverterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

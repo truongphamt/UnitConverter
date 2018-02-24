@@ -1,17 +1,17 @@
 //
-//  LengthConversionViewController.swift
+//  ConverterViewController.swift
 //  UnitConverter
 //
-//  Created by Anh Phung on 2/18/18.
+//  Created by Truong Pham on 2/23/18.
 //  Copyright © 2018 Truong Pham. All rights reserved.
 //
 
 import UIKit
 
-class LengthConversionViewController: UIViewController, UITextFieldDelegate {
+class ConverterViewController: UIViewController, UITextFieldDelegate {
 
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var conversionInfo = LengthConversionInfo()
+    var conversionInfo = ConversionInfo()
     
     @IBOutlet weak var fromValue: UITextField!
     @IBOutlet weak var toValue: UITextField!
@@ -38,7 +38,7 @@ class LengthConversionViewController: UIViewController, UITextFieldDelegate {
         fromUnit.text = conversionInfo.fromUnit
         toUnit.text = conversionInfo.toUnit
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -55,18 +55,19 @@ class LengthConversionViewController: UIViewController, UITextFieldDelegate {
         let allowedDecimal = !textField.text!.contains(".") && string.elementsEqual(".")
         return allowedCharacters.isSuperset(of: characterSet) || allowedDecimal
     }
-
+    
     func SaveCurrentConversion() {
         guard let fromValue = Double(fromValue.text!) else { return }
         guard let toValue = Double(toValue.text!) else { return }
         
-        let newConversion = Conversion(context: context)
-        let converted = "\(fromValue) \(fromUnit.text!) = \(toValue) \(toUnit.text!)"
-        newConversion.item = converted
-        newConversion.convertedDate = Date()
-        newConversion.type = "Length"
-
+        let newItem = ConvertedItem(context: context)
+        let display = "\(fromValue) \(fromUnit.text!) = \(toValue) \(toUnit.text!)"
+        newItem.item = display
+        newItem.convertedDate = Date()
+        newItem.type = conversionInfo.type
+        
         // Save the data to coredata
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
+
 }
