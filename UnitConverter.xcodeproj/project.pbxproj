@@ -17,6 +17,7 @@
 		115079BE2040F2990034B68B /* ConverterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079BD2040F2990034B68B /* ConverterViewController.swift */; };
 		115079C02040F4EF0034B68B /* LiquidTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079BF2040F4EF0034B68B /* LiquidTableViewController.swift */; };
 		115079C22040FC600034B68B /* TemperatureTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079C12040FC600034B68B /* TemperatureTableViewController.swift */; };
+		115079C42041130F0034B68B /* MassTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115079C32041130F0034B68B /* MassTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		115079BD2040F2990034B68B /* ConverterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterViewController.swift; sourceTree = "<group>"; };
 		115079BF2040F4EF0034B68B /* LiquidTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiquidTableViewController.swift; sourceTree = "<group>"; };
 		115079C12040FC600034B68B /* TemperatureTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureTableViewController.swift; sourceTree = "<group>"; };
+		115079C32041130F0034B68B /* MassTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				115079BD2040F2990034B68B /* ConverterViewController.swift */,
 				115079BF2040F4EF0034B68B /* LiquidTableViewController.swift */,
 				115079C12040FC600034B68B /* TemperatureTableViewController.swift */,
+				115079C32041130F0034B68B /* MassTableViewController.swift */,
 			);
 			path = UnitConverter;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				1127F2922039089100A8CF58 /* UnitConverter.xcdatamodeld in Sources */,
 				1127F27D2037DA6700A8CF58 /* AppDelegate.swift in Sources */,
 				115079C22040FC600034B68B /* TemperatureTableViewController.swift in Sources */,
+				115079C42041130F0034B68B /* MassTableViewController.swift in Sources */,
 				115079BC2040F0640034B68B /* ConversionInfo.swift in Sources */,
 				115079C02040F4EF0034B68B /* LiquidTableViewController.swift in Sources */,
 				1127F28F2038639600A8CF58 /* LengthTableViewController.swift in Sources */,

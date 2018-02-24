@@ -1,5 +1,5 @@
 //
-//  LiquidTableViewController.swift
+//  MassTableViewController.swift
 //  UnitConverter
 //
 //  Created by Truong Pham on 2/23/18.
@@ -9,15 +9,13 @@
 import UIKit
 import CoreData
 
-class LiquidTableViewController: UITableViewController {
-
+class MassTableViewController: UITableViewController {
+    
     let conversions = [
-        ConversionInfo(type: "Liquid", fromUnit: "Liters", toUnit: "Gallons", conversionFactor: 0.264172),
-        ConversionInfo(type: "Liquid", fromUnit: "Gallons", toUnit: "Liters", conversionFactor: 3.78541),
-        ConversionInfo(type: "Liquid", fromUnit: "Pints", toUnit: "Gallons", conversionFactor: 0.125),
-        ConversionInfo(type: "Liquid", fromUnit: "Gallons", toUnit: "Pints", conversionFactor: 9.60762),
-        ConversionInfo(type: "Liquid", fromUnit: "Quarts", toUnit: "Gallons", conversionFactor: 0.20817),
-        ConversionInfo(type: "Liquid", fromUnit: "Gallons", toUnit: "Quarts", conversionFactor: 4.80381)
+        ConversionInfo(type: "Mass", fromUnit: "Kilograms", toUnit: "Pounds", conversionFactor: 2.20462),
+        ConversionInfo(type: "Mass", fromUnit: "Pounds", toUnit: "Kilograms", conversionFactor: 0.453592),
+        ConversionInfo(type: "Mass", fromUnit: "Ounce", toUnit: "Grams", conversionFactor: 28.3495),
+        ConversionInfo(type: "Mass", fromUnit: "Grams", toUnit: "Ounce", conversionFactor: 0.035274)
     ]
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var recents: [ConvertedItem] = []
@@ -79,7 +77,7 @@ class LiquidTableViewController: UITableViewController {
     // perform seque to converterViewController
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            self.performSegue(withIdentifier: "liquidToConverter", sender: self)
+            self.performSegue(withIdentifier: "massToConverter", sender: self)
         }
     }
     
@@ -94,7 +92,7 @@ class LiquidTableViewController: UITableViewController {
             fetchRequest.sortDescriptors = [sortDescriptor]
             
             // Add Predicate
-            let predicate = NSPredicate(format: "type CONTAINS %@", "Liquid")
+            let predicate = NSPredicate(format: "type CONTAINS %@", "Mass")
             fetchRequest.predicate = predicate
             
             recents = try context.fetch(fetchRequest) as! [ConvertedItem]
@@ -114,3 +112,4 @@ class LiquidTableViewController: UITableViewController {
         }
     }
 }
+
